@@ -1,9 +1,14 @@
 package ch.makery.address.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import org.controlsfx.dialog.Dialogs;
+
 import ch.makery.address.control.*;
 import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
@@ -96,6 +101,25 @@ public class PersonOverviewController {
             postalCodeLabel.setText("");
             cityLabel.setText("");
             birthdayLabel.setText("");
+        }
+    }
+    
+    /*
+     * Called when the user clicks on the delete button.
+     */
+    
+    @FXML
+    private void handleDeletePerson() {
+        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            personTable.getItems().remove(selectedIndex);
+        } else {
+            // Nothing selected.
+        	Alert alert = new Alert(AlertType.WARNING);     
+        	alert.setTitle("Warning");     
+        	alert.setHeaderText("No person to delete");     
+        	alert.setContentText("Please select a row");     
+        	alert.showAndWait();
         }
     }
     
