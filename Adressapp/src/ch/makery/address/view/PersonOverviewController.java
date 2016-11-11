@@ -150,11 +150,12 @@ public class PersonOverviewController {
 
         } else {
             // Nothing selected.
-            Dialogs.create()
-                .title("No Selection")
-                .masthead("No Person Selected")
-                .message("Please select a person in the table.")
-                .showWarning();
+            Alert alert = new Alert(AlertType.WARNING);     
+        	alert.setTitle("No Selection");     
+        	alert.setHeaderText("No person Selected");     
+        	alert.setContentText("Please select a person in the table.");     
+        	alert.showAndWait();
+            
         }
     }
     
